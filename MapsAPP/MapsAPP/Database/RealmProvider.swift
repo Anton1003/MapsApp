@@ -26,6 +26,21 @@ final class RealmProvider {
         }
     }
 
+    static func saveOne<T: Object>(
+        item: T,
+        config: Realm.Configuration = deleteIfMifration,
+        update: Realm.UpdatePolicy = .all
+    ) {
+        do {
+            let realm = try Realm(configuration: config)
+            try realm.write {
+                realm.add(item, update: update)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
     static func get<T: Object>(type: T.Type, config: Realm.Configuration = deleteIfMifration) -> Results<T> {
         guard let realm = try? Realm(configuration: config) else { preconditionFailure() }
         return realm.objects(type)

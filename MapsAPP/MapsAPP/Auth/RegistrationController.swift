@@ -7,8 +7,12 @@
 
 import UIKit
 ///
-final class RecoveryPasswordController: UIViewController {
+final class RegistrationController: UIViewController {
     @IBOutlet var loginTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+
+    private var loginRouter = LoginRouter()
+    private var user = User()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +27,11 @@ final class RecoveryPasswordController: UIViewController {
 
     @IBAction func recovery(_ sender: Any) {
         guard let login = loginTextField.text,
-              login == LoginController.Constants.login
+              let password = passwordTextField.text
         else { return }
-
-        showPassword()
+        user.login = login
+        user.password = password
+        RealmProvider.saveOne(item: user)
+        loginRouter.toMain()
     }
 }

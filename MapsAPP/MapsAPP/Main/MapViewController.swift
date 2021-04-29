@@ -25,6 +25,11 @@ final class MapViewController: UIViewController {
 
     private let mainRouter = MainRouter()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMap()
@@ -91,6 +96,11 @@ final class MapViewController: UIViewController {
         let bounds = GMSCoordinateBounds(coordinate: firstCoord, coordinate: lastCoord)
         let update = GMSCameraUpdate.fit(bounds, withPadding: 40.0)
         mapView.moveCamera(update)
+    }
+
+    @IBAction func exitButton(_ sender: Any) {
+        mainRouter.toLaunch()
+        UserDefaults.standard.set(false, forKey: "isLogin")
     }
 
     @IBAction func startTrack(_ sender: Any) {

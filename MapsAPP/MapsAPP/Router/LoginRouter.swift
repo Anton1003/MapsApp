@@ -14,8 +14,7 @@ final class LoginRouter: BaseRouter {
     }
 
     func onRecover() {
-        let controller = UIStoryboard(name: "Auth", bundle: nil)
-            .instantiateViewController(RecoveryPasswordController.self)
+        let controller = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(RegistrationController.self)
         show(controller)
     }
 }

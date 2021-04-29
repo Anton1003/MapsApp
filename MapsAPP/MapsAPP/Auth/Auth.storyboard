@@ -47,7 +47,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xjo-yA-FdT"/>
                                 </constraints>
-                                <state key="normal" title="Восстановить пароль"/>
+                                <state key="normal" title="Зарегистрироваться"/>
                                 <connections>
                                     <action selector="recovery:" destination="MKX-fS-vrQ" eventType="touchUpInside" id="tDY-Yt-VjM"/>
                                 </connections>
@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="3436" y="-418"/>
         </scene>
-        <!--Recovery Password Controller-->
+        <!--Registration Controller-->
         <scene sceneID="i1t-Dt-a5n">
             <objects>
-                <viewController storyboardIdentifier="RecoveryPasswordController" id="Tei-ER-dIv" customClass="RecoveryPasswordController" customModule="MapsAPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationController" id="Tei-ER-dIv" customClass="RegistrationController" customModule="MapsAPP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qFI-ri-Ic5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,12 +106,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nx0-kw-J1z">
+                                <rect key="frame" x="30" y="334" width="354" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5My-B0-pzB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxJ-2R-zUU">
-                                <rect key="frame" x="100" y="394" width="214" height="50"/>
+                                <rect key="frame" x="100" y="524" width="214" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qOD-iD-neO"/>
                                 </constraints>
-                                <state key="normal" title="Восстановить пароль"/>
+                                <state key="normal" title="Регистрация"/>
                                 <connections>
                                     <action selector="recovery:" destination="Tei-ER-dIv" eventType="touchUpInside" id="Loe-VE-d3a"/>
                                 </connections>
@@ -120,8 +128,11 @@
                         <viewLayoutGuide key="safeArea" id="cJR-Yu-Tkf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mxJ-2R-zUU" firstAttribute="top" secondItem="oap-rH-jlD" secondAttribute="bottom" constant="100" id="1xa-h9-dVn"/>
+                            <constraint firstItem="mxJ-2R-zUU" firstAttribute="top" secondItem="Nx0-kw-J1z" secondAttribute="bottom" constant="140" id="1xa-h9-dVn"/>
+                            <constraint firstItem="cJR-Yu-Tkf" firstAttribute="trailing" secondItem="Nx0-kw-J1z" secondAttribute="trailing" constant="30" id="Lvi-ME-04X"/>
                             <constraint firstItem="cJR-Yu-Tkf" firstAttribute="trailing" secondItem="mxJ-2R-zUU" secondAttribute="trailing" constant="100" id="Z8r-Ph-ldB"/>
+                            <constraint firstItem="Nx0-kw-J1z" firstAttribute="top" secondItem="oap-rH-jlD" secondAttribute="bottom" constant="40" id="cR3-8s-eCt"/>
+                            <constraint firstItem="Nx0-kw-J1z" firstAttribute="leading" secondItem="cJR-Yu-Tkf" secondAttribute="leading" constant="30" id="d4Z-gp-aDP"/>
                             <constraint firstItem="mxJ-2R-zUU" firstAttribute="leading" secondItem="cJR-Yu-Tkf" secondAttribute="leading" constant="100" id="fRb-7E-rfL"/>
                             <constraint firstItem="oap-rH-jlD" firstAttribute="leading" secondItem="cJR-Yu-Tkf" secondAttribute="leading" constant="30" id="p1d-ei-PGO"/>
                             <constraint firstItem="cJR-Yu-Tkf" firstAttribute="trailing" secondItem="oap-rH-jlD" secondAttribute="trailing" constant="30" id="tc1-gz-CrN"/>
@@ -130,6 +141,7 @@
                     </view>
                     <connections>
                         <outlet property="loginTextField" destination="oap-rH-jlD" id="i0F-Le-ZvE"/>
+                        <outlet property="passwordTextField" destination="Nx0-kw-J1z" id="5pQ-Ei-xRg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MY7-d4-Ps0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

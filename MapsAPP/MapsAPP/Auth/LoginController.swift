@@ -5,26 +5,15 @@
 //  Created by User on 29.04.2021.
 //
 
+import RealmSwift
 import UIKit
 
 final class LoginController: UIViewController {
-    enum Constants {
-        static let login = "admin"
-        static let password = "123456"
-    }
-
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
 
     private let loginRouter = LoginRouter()
-
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        if UserDefaults.standard.bool(forKey: "isLogin") {
-//            performSegue(withIdentifier: "toMain", sender: self)
-//        }
-//    }
+    private let realm = try? Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +21,27 @@ final class LoginController: UIViewController {
         loginRouter.controller = self
     }
 
+    private func showAlert(title: String) {
+        let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+
     @IBAction func login(_ sender: Any) {
         guard let login = loginTextField.text,
-              let password = passwordTextField.text,
-              login == Constants.login, password == Constants.password
+              let password = passwordTextField.text
         else { return }
-
-        UserDefaults.standard.set(true, forKey: "isLogin")
-        loginRouter.toMain()
-
-        print("Login")
+        if let user = realm?.object(ofType: User.self, forPrimaryKey: login) {
+            if user.password == password {
+                UserDefaults.standard.set(true, forKey: "isLogin")
+                loginRouter.toMain()
+                print("Login")
+            } else {
+                showAlert(title: "Неправильный пароль")
+            }
+        } else {
+            showAlert(title: "Нет такого пользователя")
+        }
     }
 
     @IBAction func recovery(_ sender: Any) {
