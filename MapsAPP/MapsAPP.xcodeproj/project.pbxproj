@@ -143,9 +143,9 @@
 		CE62358F26370C5400EE94F5 /* MapsAPP */ = {
 			isa = PBXGroup;
 			children = (
+				CE6B4BB7263B091A0041F820 /* Model */,
 				CE62359026370C5400EE94F5 /* AppDelegate.swift */,
 				CE62359226370C5400EE94F5 /* SceneDelegate.swift */,
-				CE6235DF2639C4B500EE94F5 /* RealmProvider.swift */,
 				CE62359426370C5400EE94F5 /* MapViewController.swift */,
 				CE6235E72639CA4700EE94F5 /* Location.swift */,
 				CE62359626370C5400EE94F5 /* Main.storyboard */,
@@ -172,6 +172,22 @@
 				CE6235B426370C5D00EE94F5 /* Info.plist */,
 			);
 			path = MapsAPPUITests;
+			sourceTree = "<group>";
+		};
+		CE6B4BB7263B091A0041F820 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE6B4BB8263B09230041F820 /* Database */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE6B4BB8263B09230041F820 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				CE6235DF2639C4B500EE94F5 /* RealmProvider.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
