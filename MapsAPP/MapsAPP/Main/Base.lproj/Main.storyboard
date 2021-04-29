@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Controller-->
+        <scene sceneID="euc-E2-sZ9">
+            <objects>
+                <viewController storyboardIdentifier="MainController" id="grQ-Wo-qza" customClass="MainController" customModule="MapsAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gZ6-A9-NTW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bm7-eE-5eP">
+                                <rect key="frame" x="184" y="483" width="46" height="30"/>
+                                <state key="normal" title="Выйти"/>
+                                <connections>
+                                    <action selector="logout:" destination="qhl-A1-y8p" eventType="touchUpInside" id="DIU-pY-ILQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eW-XT-hJH">
+                                <rect key="frame" x="151.5" y="383" width="111" height="30"/>
+                                <state key="normal" title="Показать карту"/>
+                                <connections>
+                                    <action selector="showMap:" destination="qhl-A1-y8p" eventType="touchUpInside" id="Ez3-rw-Toa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SWB-a8-bD9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3eW-XT-hJH" firstAttribute="centerX" secondItem="gZ6-A9-NTW" secondAttribute="centerX" id="0BG-gB-f19"/>
+                            <constraint firstItem="Bm7-eE-5eP" firstAttribute="centerY" secondItem="gZ6-A9-NTW" secondAttribute="centerY" constant="50" id="94k-Mc-sbY"/>
+                            <constraint firstItem="Bm7-eE-5eP" firstAttribute="centerX" secondItem="gZ6-A9-NTW" secondAttribute="centerX" id="GMo-o1-3my"/>
+                            <constraint firstItem="3eW-XT-hJH" firstAttribute="centerY" secondItem="gZ6-A9-NTW" secondAttribute="centerY" constant="-50" id="LQo-yF-Ezm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dAN-ji-5UT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="qhl-A1-y8p" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-733" y="56"/>
+        </scene>
+        <!--Карта-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" customModule="MapsAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwU-VL-7nQ" userLabel="mapView" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdJ-6o-iqZ">
+                                <rect key="frame" x="244" y="782" width="150" height="50"/>
+                                <color key="backgroundColor" red="0.95435970940000003" green="0.20899052360000001" blue="0.3491589658" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="LR1-e7-Pq9"/>
+                                    <constraint firstAttribute="height" constant="50" id="Nbo-C4-Aw4"/>
+                                </constraints>
+                                <state key="normal" title="Закончить">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelTrack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TYZ-MV-J5F"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emt-Nd-rkW">
+                                <rect key="frame" x="20" y="702" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4fA-0o-1dm"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="linkColor"/>
+                                <state key="normal" title="Отобразить предыдущий маршрут">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="getLastTrack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vxi-bS-z6R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ik-Jg-V2s">
+                                <rect key="frame" x="20" y="782" width="150" height="50"/>
+                                <color key="backgroundColor" red="0.3310829414" green="1" blue="0.44505355959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ImY-6w-h5D"/>
+                                    <constraint firstAttribute="width" constant="150" id="dlo-LG-diy"/>
+                                </constraints>
+                                <state key="normal" title="Старт"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startTrack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FJ9-oq-9oy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zwU-VL-7nQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7OV-SR-cqs"/>
+                            <constraint firstItem="tdJ-6o-iqZ" firstAttribute="top" secondItem="emt-Nd-rkW" secondAttribute="bottom" constant="30" id="EaM-Us-2fs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="emt-Nd-rkW" secondAttribute="trailing" constant="20" id="M7a-ID-JxJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9ik-Jg-V2s" secondAttribute="bottom" constant="30" id="UV4-OM-B4l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tdJ-6o-iqZ" secondAttribute="bottom" constant="30" id="VMA-SO-DDx"/>
+                            <constraint firstItem="zwU-VL-7nQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YhP-pm-YNV"/>
+                            <constraint firstItem="emt-Nd-rkW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Z7H-SH-Qzz"/>
+                            <constraint firstItem="9ik-Jg-V2s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nNI-3q-lS1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tdJ-6o-iqZ" secondAttribute="trailing" constant="20" id="pBF-fR-5O1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zwU-VL-7nQ" secondAttribute="trailing" id="qJe-j5-7H4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zwU-VL-7nQ" secondAttribute="bottom" id="ry1-5U-145"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Карта" id="7xp-gK-w92">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Start" id="lve-aA-UTM">
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                            </barButtonItem>
+                            <barButtonItem title="Cancel" id="hqo-pf-x0A">
+                                <color key="tintColor" red="0.95435970940000003" green="0.20899052360000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Last Track" id="iC5-6U-JUS"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="zwU-VL-7nQ" id="omZ-1J-FGt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="198.55072463768118" y="47.544642857142854"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
