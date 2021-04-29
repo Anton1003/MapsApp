@@ -5,18 +5,16 @@
 //  Created by User on 26.04.2021.
 //
 
-import UIKit
 import GoogleMaps
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
         GMSServices.provideAPIKey("AIzaSyC1uJ_iiqD-y9c9fwcT7_qsDRiQqhYLntM")
         return true
     }
-    
 }
-

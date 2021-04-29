@@ -9,11 +9,13 @@ import Foundation
 import RealmSwift
 
 final class RealmProvider {
-     static let deleteIfMifration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-    
-     static func save<T: Object>(items: [T],
-                          config: Realm.Configuration = deleteIfMifration,
-                          update: Realm.UpdatePolicy = .all) {
+    static let deleteIfMifration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+
+    static func save<T: Object>(
+        items: [T],
+        config: Realm.Configuration = deleteIfMifration,
+        update: Realm.UpdatePolicy = .all
+    ) {
         do {
             let realm = try Realm(configuration: config)
             try realm.write {
@@ -23,17 +25,17 @@ final class RealmProvider {
             print(error.localizedDescription)
         }
     }
-    
+
     static func get<T: Object>(type: T.Type, config: Realm.Configuration = deleteIfMifration) -> Results<T> {
-        guard let realm = try? Realm(configuration: config) else {preconditionFailure()}
+        guard let realm = try? Realm(configuration: config) else { preconditionFailure() }
         return realm.objects(type)
     }
-    
+
     static func delete<T: Object>(type: T.Type, config: Realm.Configuration = deleteIfMifration) {
         do {
             let realm = try Realm(configuration: config)
             let object = realm.objects(type)
-            
+
             try realm.write {
                 realm.delete(object)
             }
@@ -41,11 +43,11 @@ final class RealmProvider {
             print(error.localizedDescription)
         }
     }
-    
+
     static func delete<T: Object>(_ items: [T], config: Realm.Configuration = deleteIfMifration) {
-            let realm = try? Realm(configuration: config)
-            try? realm?.write {
-                realm?.delete(items)
-            }
+        let realm = try? Realm(configuration: config)
+        try? realm?.write {
+            realm?.delete(items)
+        }
     }
 }
