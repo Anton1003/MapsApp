@@ -23,10 +23,13 @@ final class MapViewController: UIViewController {
 
     private let realm = try? Realm()
 
+    private let mainRouter = MainRouter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMap()
         configureLocationManager()
+        mainRouter.controller = self
     }
 
     private func configureMap() {

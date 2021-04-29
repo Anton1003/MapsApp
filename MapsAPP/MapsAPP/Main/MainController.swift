@@ -8,11 +8,19 @@
 import UIKit
 
 final class MainController: UIViewController {
+    private var router = MainRouter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        router.controller = self
     }
 
-    @IBAction func showMap(_ sender: Any) {}
+    @IBAction func showMap(_ sender: Any) {
+        router.toMap()
+    }
 
-    @IBAction func logout(_ sender: Any) {}
+    @IBAction func logout(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "isLogin")
+        router.toLaunch()
+    }
 }

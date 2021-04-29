@@ -16,8 +16,20 @@ final class LoginController: UIViewController {
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
 
+    private let loginRouter = LoginRouter()
+
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//
+//        if UserDefaults.standard.bool(forKey: "isLogin") {
+//            performSegue(withIdentifier: "toMain", sender: self)
+//        }
+//    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loginRouter.controller = self
     }
 
     @IBAction func login(_ sender: Any) {
@@ -26,8 +38,13 @@ final class LoginController: UIViewController {
               login == Constants.login, password == Constants.password
         else { return }
 
+        UserDefaults.standard.set(true, forKey: "isLogin")
+        loginRouter.toMain()
+
         print("Login")
     }
 
-    @IBAction func recovery(_ sender: Any) {}
+    @IBAction func recovery(_ sender: Any) {
+        loginRouter.onRecover()
+    }
 }

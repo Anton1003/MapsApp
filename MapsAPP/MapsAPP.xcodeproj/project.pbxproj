@@ -24,6 +24,9 @@
 		CE6B4BD6263B10290041F820 /* RecoveryPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4BD5263B10290041F820 /* RecoveryPasswordController.swift */; };
 		CE6B4BDB263B182A0041F820 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4BDA263B182A0041F820 /* MainController.swift */; };
 		CE6B4BE0263B1CF40041F820 /* InstantiateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4BDF263B1CF30041F820 /* InstantiateHelper.swift */; };
+		CE6B4BF4263B1FEF0041F820 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4BF3263B1FEF0041F820 /* BaseRouter.swift */; };
+		CE6B4BFD263B2C7D0041F820 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4BFC263B2C7D0041F820 /* LoginRouter.swift */; };
+		CE6B4C02263B2C900041F820 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4C01263B2C900041F820 /* MainRouter.swift */; };
 		CF6EB69614260493D2639FCC /* Pods_MapsAPPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309D1B6B390B45A9D1B248DC /* Pods_MapsAPPTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +78,9 @@
 		CE6B4BD5263B10290041F820 /* RecoveryPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPasswordController.swift; sourceTree = "<group>"; };
 		CE6B4BDA263B182A0041F820 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		CE6B4BDF263B1CF30041F820 /* InstantiateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantiateHelper.swift; sourceTree = "<group>"; };
+		CE6B4BF3263B1FEF0041F820 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		CE6B4BFC263B2C7D0041F820 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		CE6B4C01263B2C900041F820 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,15 +159,16 @@
 		CE62358F26370C5400EE94F5 /* MapsAPP */ = {
 			isa = PBXGroup;
 			children = (
+				CE6B4BF8263B2C630041F820 /* Router */,
 				CE6B4BE4263B1CF90041F820 /* Helper */,
 				CE6B4BB7263B091A0041F820 /* Model */,
-				CE62359026370C5400EE94F5 /* AppDelegate.swift */,
-				CE62359226370C5400EE94F5 /* SceneDelegate.swift */,
 				CE6235E72639CA4700EE94F5 /* Location.swift */,
 				CE6B4BCF263B0FB90041F820 /* Auth */,
 				CE6B4BCE263B0F9A0041F820 /* Main */,
 				CE62359926370C5C00EE94F5 /* Assets.xcassets */,
 				CE62359B26370C5C00EE94F5 /* LaunchScreen.storyboard */,
+				CE62359026370C5400EE94F5 /* AppDelegate.swift */,
+				CE62359226370C5400EE94F5 /* SceneDelegate.swift */,
 				CE62359E26370C5C00EE94F5 /* Info.plist */,
 			);
 			path = MapsAPP;
@@ -227,6 +234,16 @@
 				CE6B4BDF263B1CF30041F820 /* InstantiateHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		CE6B4BF8263B2C630041F820 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CE6B4BF3263B1FEF0041F820 /* BaseRouter.swift */,
+				CE6B4BFC263B2C7D0041F820 /* LoginRouter.swift */,
+				CE6B4C01263B2C900041F820 /* MainRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,8 +564,11 @@
 				CE62359526370C5400EE94F5 /* MapViewController.swift in Sources */,
 				CE6B4BD1263B0FF20041F820 /* LoginController.swift in Sources */,
 				CE62359126370C5400EE94F5 /* AppDelegate.swift in Sources */,
+				CE6B4C02263B2C900041F820 /* MainRouter.swift in Sources */,
 				CE6235E82639CA4800EE94F5 /* Location.swift in Sources */,
 				CE6B4BD6263B10290041F820 /* RecoveryPasswordController.swift in Sources */,
+				CE6B4BF4263B1FEF0041F820 /* BaseRouter.swift in Sources */,
+				CE6B4BFD263B2C7D0041F820 /* LoginRouter.swift in Sources */,
 				CE6235E02639C4B600EE94F5 /* RealmProvider.swift in Sources */,
 				CE62359326370C5400EE94F5 /* SceneDelegate.swift in Sources */,
 			);
