@@ -72,6 +72,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Uoa-XX-231"/>
                     <connections>
+                        <outlet property="logInButton" destination="1M6-GT-lAl" id="x9f-td-Umd"/>
                         <outlet property="loginTextField" destination="hy6-SW-KTP" id="2zf-PS-WkO"/>
                         <outlet property="passwordTextField" destination="M3e-Zs-Vbv" id="IWP-Dv-HnX"/>
                         <segue destination="Tei-ER-dIv" kind="presentation" modalPresentationStyle="fullScreen" id="MOb-6g-9rH"/>

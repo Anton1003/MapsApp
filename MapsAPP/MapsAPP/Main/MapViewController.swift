@@ -8,13 +8,14 @@
 import CoreLocation
 import GoogleMaps
 import RealmSwift
+import RxSwift
 import UIKit
 
 final class MapViewController: UIViewController {
     @IBOutlet var mapView: GMSMapView!
 
-    private let coordinate = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
-    private var locationManager: CLLocationManager?
+    private var locationManager = LocationManager.instance
+    private let disposeBag = DisposeBag()
 
     private var route: GMSPolyline?
     private var routePath: GMSMutablePath?
@@ -32,27 +33,25 @@ final class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureMap()
         configureLocationManager()
         mainRouter.controller = self
     }
 
-    private func configureMap() {
-        let camera = GMSCameraPosition.camera(withTarget: coordinate, zoom: 17)
-        mapView.camera = camera
-    }
-
     private func configureLocationManager() {
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.allowsBackgroundLocationUpdates = true
-        locationManager?.pausesLocationUpdatesAutomatically = false
-        locationManager?.startMonitoringSignificantLocationChanges()
-        locationManager?.requestAlwaysAuthorization()
+        locationManager
+            .location
+            .asObservable()
+            .subscribe(onNext: { [weak self] location in
+                guard let location = location else { return }
+                self?.routePath?.add(location.coordinate)
+                self?.route?.path = self?.routePath
+                let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
+                self?.mapView.animate(to: position)
+            })
     }
 
     private func endTraking() {
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopLocation()
         isTraking = false
         saveTraking()
     }
@@ -108,7 +107,7 @@ final class MapViewController: UIViewController {
         route = GMSPolyline()
         routePath = GMSMutablePath()
         route?.map = mapView
-        locationManager?.startUpdatingLocation()
+        locationManager.startLocation()
         isTraking = true
     }
 
