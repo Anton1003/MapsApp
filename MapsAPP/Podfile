@@ -7,6 +7,8 @@ target 'MapsAPP' do
 
   pod 'GoogleMaps'
   pod 'RealmSwift'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'MapsAPPTests' do
     inherit! :search_paths
