@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bm7-eE-5eP">
-                                <rect key="frame" x="184" y="483" width="46" height="30"/>
+                                <rect key="frame" x="184" y="433" width="46" height="30"/>
                                 <state key="normal" title="Выйти"/>
                                 <connections>
                                     <action selector="logout:" destination="grQ-Wo-qza" eventType="touchUpInside" id="8nq-Oq-udi"/>
@@ -25,11 +25,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eW-XT-hJH">
-                                <rect key="frame" x="151.5" y="383" width="111" height="30"/>
+                                <rect key="frame" x="151.5" y="363" width="111" height="30"/>
                                 <state key="normal" title="Показать карту"/>
                                 <connections>
                                     <action selector="showMap:" destination="qhl-A1-y8p" eventType="touchUpInside" id="Ez3-rw-Toa"/>
                                     <action selector="showMap:" destination="grQ-Wo-qza" eventType="touchUpInside" id="MRv-ph-SS1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xkx-zA-KUL">
+                                <rect key="frame" x="152.5" y="503" width="109" height="30"/>
+                                <state key="normal" title="Сделать селфи"/>
+                                <connections>
+                                    <action selector="takePicture:" destination="grQ-Wo-qza" eventType="touchUpInside" id="NGY-nf-Q36"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -37,9 +44,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3eW-XT-hJH" firstAttribute="centerX" secondItem="gZ6-A9-NTW" secondAttribute="centerX" id="0BG-gB-f19"/>
-                            <constraint firstItem="Bm7-eE-5eP" firstAttribute="centerY" secondItem="gZ6-A9-NTW" secondAttribute="centerY" constant="50" id="94k-Mc-sbY"/>
+                            <constraint firstItem="Bm7-eE-5eP" firstAttribute="centerY" secondItem="gZ6-A9-NTW" secondAttribute="centerY" id="94k-Mc-sbY"/>
                             <constraint firstItem="Bm7-eE-5eP" firstAttribute="centerX" secondItem="gZ6-A9-NTW" secondAttribute="centerX" id="GMo-o1-3my"/>
-                            <constraint firstItem="3eW-XT-hJH" firstAttribute="centerY" secondItem="gZ6-A9-NTW" secondAttribute="centerY" constant="-50" id="LQo-yF-Ezm"/>
+                            <constraint firstItem="3eW-XT-hJH" firstAttribute="centerY" secondItem="gZ6-A9-NTW" secondAttribute="centerY" constant="-70" id="LQo-yF-Ezm"/>
+                            <constraint firstItem="Xkx-zA-KUL" firstAttribute="centerY" secondItem="gZ6-A9-NTW" secondAttribute="centerY" constant="70" id="Oyx-L6-dbY"/>
+                            <constraint firstItem="Xkx-zA-KUL" firstAttribute="centerX" secondItem="gZ6-A9-NTW" secondAttribute="centerX" id="maq-Zs-iWB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sJg-Zs-vgL"/>
