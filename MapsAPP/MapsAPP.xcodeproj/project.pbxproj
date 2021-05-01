@@ -29,6 +29,7 @@
 		CE6B4C02263B2C900041F820 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4C01263B2C900041F820 /* MainRouter.swift */; };
 		CE6B4C13263B4D070041F820 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4C12263B4D070041F820 /* User.swift */; };
 		CE6B4C2A263D937D0041F820 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4C29263D937D0041F820 /* LocationManager.swift */; };
+		CE6B4C35263DC0380041F820 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4C34263DC0380041F820 /* Notifications.swift */; };
 		CF6EB69614260493D2639FCC /* Pods_MapsAPPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309D1B6B390B45A9D1B248DC /* Pods_MapsAPPTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		CE6B4C01263B2C900041F820 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		CE6B4C12263B4D070041F820 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE6B4C29263D937D0041F820 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		CE6B4C34263DC0380041F820 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			children = (
 				CE6B4BDF263B1CF30041F820 /* InstantiateHelper.swift */,
 				CE6B4C29263D937D0041F820 /* LocationManager.swift */,
+				CE6B4C34263DC0380041F820 /* Notifications.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6B4C35263DC0380041F820 /* Notifications.swift in Sources */,
 				CE6B4C13263B4D070041F820 /* User.swift in Sources */,
 				CE6B4BDB263B182A0041F820 /* MainController.swift in Sources */,
 				CE6B4BE0263B1CF40041F820 /* InstantiateHelper.swift in Sources */,

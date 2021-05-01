@@ -18,14 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         GMSServices.provideAPIKey("AIzaSyC1uJ_iiqD-y9c9fwcT7_qsDRiQqhYLntM")
 
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            guard granted else {
-                print("Рфзрешение не получено")
-                return
-            }
-        }
-
         let controller: UIViewController
         if UserDefaults.standard.bool(forKey: "isLogin") {
             controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(MainController.self)
