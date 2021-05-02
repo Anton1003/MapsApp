@@ -8,8 +8,6 @@
 import UIKit
 
 final class MainController: UIViewController {
-   
-
     private var router = MainRouter()
 
     override func viewDidLoad() {
@@ -36,7 +34,7 @@ final class MainController: UIViewController {
 //    }
 }
 
-//extension MainController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+// extension MainController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 //    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 //        picker.dismiss(animated: true)
 //    }
@@ -59,4 +57,4 @@ final class MainController: UIViewController {
 //            return nil
 //        }
 //    }
-//}
+// }

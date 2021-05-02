@@ -17,7 +17,7 @@ final class MainRouter: BaseRouter {
         let controller = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(LoginController.self)
         setAsRoot(UINavigationController(rootViewController: controller))
     }
-    
+
 //    func showSelfyModule(image: UIImage) {
 //        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(SelfyController.self)
 //        controller.image = image

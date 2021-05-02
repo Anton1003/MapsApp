@@ -16,17 +16,15 @@ final class MapViewController: UIViewController {
 
     private var locationManager = LocationManager.instance
     private let disposeBag = DisposeBag()
-
     private var route: GMSPolyline?
     private var routePath: GMSMutablePath?
-
     private var isTraking = false
-
     private let realm = try? Realm()
-
     private let mainRouter = MainRouter()
-    
+    private let coordinate = CLLocationCoordinate2D(latitude: 55.612558, longitude: 37.580912)
     var onTakePicture: ((UIImage) -> Void)?
+    var iconMarker: UIImage?
+    var marker: GMSMarker?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -99,9 +97,22 @@ final class MapViewController: UIViewController {
         mapView.moveCamera(update)
     }
 
+    private func createMarker(position: CLLocationCoordinate2D) {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let image = UIImageView(frame: view.frame)
+        view.layer.cornerRadius = view.frame.width / 2
+        image.image = iconMarker
+        view.addSubview(image)
+        let marker = GMSMarker(position: position)
+        marker.iconView = view
+        marker.map = mapView
+        self.marker = marker
+    }
+
     @IBAction func showCamera(_ sender: Any) {
         showImageController()
     }
+
     @IBAction func exitButton(_ sender: Any) {
         mainRouter.toLaunch()
         UserDefaults.standard.set(false, forKey: "isLogin")
@@ -158,7 +169,6 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
     func showImageController() {
         let alertController = UIAlertController(title: "Выбор изображения", message: nil, preferredStyle: .alert)
         let photoAction = UIAlertAction(title: "Выбрать из галерей", style: .default) { [weak self] _ in
@@ -171,11 +181,10 @@ extension MapViewController: UINavigationControllerDelegate, UIImagePickerContro
         alertController.addAction(photoAction)
         alertController.addAction(cameraAction)
         alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
 
+        present(alertController, animated: true, completion: nil)
     }
-    
+
     func takePicture(sourceType: UIImagePickerController.SourceType) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = sourceType
@@ -183,28 +192,21 @@ extension MapViewController: UINavigationControllerDelegate, UIImagePickerContro
         imagePickerController.delegate = self
         present(imagePickerController, animated: true)
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
 
     func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+        _ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
-        picker.dismiss(animated: true) { [weak self] in
-            guard let image = self?.extractImage(from: info) else {return}
-            self?.onTakePicture?(image)
-        }
-    }
-
-    private func extractImage(from info: [UIImagePickerController.InfoKey: Any]) -> UIImage? {
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            return image
+            iconMarker = image
+            createMarker(position: coordinate)
         } else if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            return image
-        } else {
-            return nil
+            iconMarker = image
+            createMarker(position: coordinate)
         }
+        dismiss(animated: true, completion: nil)
     }
 }

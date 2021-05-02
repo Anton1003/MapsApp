@@ -9,7 +9,7 @@ import AVFoundation
 import UIKit
 
 final class PhotoViewController: UIViewController {
-    var onTakePicture: ((UIImage) -> Void)?
+//    var onTakePicture: ((UIImage) -> Void)?
 
     var captureSession: AVCaptureSession?
 
@@ -100,7 +100,7 @@ extension PhotoViewController: AVCapturePhotoCaptureDelegate {
             scale: 1.0,
             orientation: deviceOrientationOnCapture.getUIImageOrientationFromDevice()
         )
-        onTakePicture?(image)
+//        onTakePicture?(image)
     }
 
     func photoOutput(
