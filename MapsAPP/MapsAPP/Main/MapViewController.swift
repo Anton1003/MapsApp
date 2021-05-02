@@ -43,10 +43,12 @@ final class MapViewController: UIViewController {
             .asObservable()
             .subscribe(onNext: { [weak self] location in
                 guard let location = location else { return }
+                self?.removeMarker()
                 self?.routePath?.add(location.coordinate)
                 self?.route?.path = self?.routePath
                 let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
                 self?.mapView.animate(to: position)
+                self?.createMarker(position: location.coordinate)
             })
     }
 
@@ -100,13 +102,17 @@ final class MapViewController: UIViewController {
     private func createMarker(position: CLLocationCoordinate2D) {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         let image = UIImageView(frame: view.frame)
-        view.layer.cornerRadius = view.frame.width / 2
         image.image = iconMarker
         view.addSubview(image)
         let marker = GMSMarker(position: position)
         marker.iconView = view
         marker.map = mapView
         self.marker = marker
+    }
+
+    private func removeMarker() {
+        marker?.map = nil
+        marker = nil
     }
 
     @IBAction func showCamera(_ sender: Any) {
