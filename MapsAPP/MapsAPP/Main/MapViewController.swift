@@ -25,6 +25,8 @@ final class MapViewController: UIViewController {
     private let realm = try? Realm()
 
     private let mainRouter = MainRouter()
+    
+    var onTakePicture: ((UIImage) -> Void)?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -152,5 +154,57 @@ extension MapViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
+    }
+}
+
+extension MapViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func showImageController() {
+        let alertController = UIAlertController(title: "Выбор изображения", message: nil, preferredStyle: .alert)
+        let photoAction = UIAlertAction(title: "Выбрать из галерей", style: .default) { [weak self] _ in
+            self?.takePicture(sourceType: .photoLibrary)
+        }
+        let cameraAction = UIAlertAction(title: "Сделать снимок", style: .default) { [weak self] _ in
+            self?.takePicture(sourceType: .camera)
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        alertController.addAction(photoAction)
+        alertController.addAction(cameraAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+
+    }
+    
+    func takePicture(sourceType: UIImagePickerController.SourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = sourceType
+        imagePickerController.allowsEditing = true
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
+        picker.dismiss(animated: true) { [weak self] in
+            guard let image = self?.extractImage(from: info) else {return}
+            self?.onTakePicture?(image)
+        }
+    }
+
+    private func extractImage(from info: [UIImagePickerController.InfoKey: Any]) -> UIImage? {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            return image
+        } else if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            return image
+        } else {
+            return nil
+        }
     }
 }
