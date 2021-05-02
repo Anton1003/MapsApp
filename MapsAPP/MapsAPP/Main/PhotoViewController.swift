@@ -8,7 +8,7 @@
 import AVFoundation
 import UIKit
 
-//final class PhotoViewController: UIViewController {
+// final class PhotoViewController: UIViewController {
 ////    var onTakePicture: ((UIImage) -> Void)?
 //
 //    var captureSession: AVCaptureSession?
@@ -87,9 +87,9 @@ import UIKit
 //        previewLayer.frame = view.layer.bounds
 //        self.previewLayer = previewLayer
 //    }
-//}
+// }
 //
-//extension PhotoViewController: AVCapturePhotoCaptureDelegate {
+// extension PhotoViewController: AVCapturePhotoCaptureDelegate {
 //    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
 //        guard let imageData = photo.fileDataRepresentation(),
 //              let uiImage = UIImage(data: imageData),
@@ -109,9 +109,9 @@ import UIKit
 //    ) {
 //        deviceOrientationOnCapture = UIDevice.current.orientation
 //    }
-//}
+// }
 //
-//private extension UIDeviceOrientation {
+// private extension UIDeviceOrientation {
 //    func getUIImageOrientationFromDevice() -> UIImage.Orientation {
 //        let orientation: UIImage.Orientation
 //        switch self {
@@ -149,4 +149,4 @@ import UIKit
 //        }
 //        return orientation
 //    }
-//}
+// }
