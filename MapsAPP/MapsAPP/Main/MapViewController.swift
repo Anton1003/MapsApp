@@ -97,6 +97,9 @@ final class MapViewController: UIViewController {
         mapView.moveCamera(update)
     }
 
+    @IBAction func showCamera(_ sender: Any) {
+        showImageController()
+    }
     @IBAction func exitButton(_ sender: Any) {
         mainRouter.toLaunch()
         UserDefaults.standard.set(false, forKey: "isLogin")

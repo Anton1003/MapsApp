@@ -8,6 +8,8 @@
 import UIKit
 
 final class MainController: UIViewController {
+    var onTakePicture: ((UIImage) -> Void)?
+
     private var router = MainRouter()
 
     override func viewDidLoad() {
@@ -23,10 +25,11 @@ final class MainController: UIViewController {
         UserDefaults.standard.set(false, forKey: "isLogin")
         router.toLaunch()
     }
+
     @IBAction func takePicture(_ sender: Any) {
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {return}
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { return }
         let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .camera
+        imagePickerController.sourceType = .photoLibrary
         imagePickerController.allowsEditing = true
         imagePickerController.delegate = self
         present(imagePickerController, animated: true)
@@ -37,13 +40,20 @@ extension MainController: UINavigationControllerDelegate, UIImagePickerControlle
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = extractImage(from: info)
-        print(image ?? UIImage())
-        picker.dismiss(animated: true)
+
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
+        picker.dismiss(animated: true) { [weak self] in
+            guard let image = self?.extractImage(from: info) else {return}
+            self?.onTakePicture?(image)
+        }
+//        let image = extractImage(from: info)
+//        print(image ?? UIImage())
+//        picker.dismiss(animated: true)
     }
-    
+
     private func extractImage(from info: [UIImagePickerController.InfoKey: Any]) -> UIImage? {
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             return image
